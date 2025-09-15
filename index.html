@@ -1,1424 +1,772 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Especialistas em esquadrias de alumínio e envidraçamento para projetos residenciais, prediais e comerciais. Soluções modernas e personalizadas.">
-    <meta name="keywords" content="esquadrias, alumínio, envidraçamento, janelas, portas, sacadas, fachadas, vidros temperados, box para banheiro, guarda-corpo">
-    <meta name="author" content="AluVidro Solutions">
-    <title>ELITTE | Esquadrias em Alumínio e Soluções em Vidro</title>
+    <title>Jogo da Memória | SuperPDV</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #2c3e50;       /* Azul escuro */
-            --primary-light: #3d566e; /* Azul médio */
-            --primary-dark: #1c2a38;  /* Azul mais escuro */
-            --secondary: #e67e22;     /* Laranja */
-            --light: #f5f7fa;         /* Azul muito claro */
-            --gray: #95a5a6;          /* Cinza */
-            --white: #ffffff;          
-            --accent: #ecf0f1;        /* Cinza claro */
-            --shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
-            --transition: all 0.4s ease;
+            --cor-primaria: #2563eb;
+            --cor-secundaria: #10b981;
+            --cor-perigo: #ef4444;
+            --cor-alerta: #f59e0b;
+
+            --fundo-escuro: #1e293b;
+            --fundo-card: #334155;
+            --fundo-input: #475569;
+            --texto-claro: #f1f5f9;
+            --texto-suave: #cbd5e1;
+            --borda: #475569;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            font-family: 'Open Sans', sans-serif;
-            color: var(--primary);
-            background-color: var(--white);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        h1, h2, h3, h4, h5 {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            line-height: 1.3;
-            color: var(--primary);
+            background-color: var(--fundo-escuro);
+            color: var(--texto-claro);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
         }
 
         .container {
             width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header */
-        header {
-            background-color: var(--white);
-            box-shadow: var(--shadow);
-            position: fixed;
-            width: 100%;
-            z-index: 1000;
-            transition: var(--transition);
-        }
-
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 0;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-        }
-
-        .logo img {
-            height: 50px;
-        }
-
-        .logo-text {
-            margin-left: 10px;
-        }
-
-        .logo-text h1 {
-            font-size: 24px;
-            color: var(--primary);
-            margin: 0;
-        }
-
-        .logo-text span {
-            color: var(--secondary);
-            font-size: 14px;
-            display: block;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-
-        .nav-links li {
-            margin-left: 30px;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--primary);
-            font-weight: 500;
-            font-size: 16px;
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .nav-links a:after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--secondary);
-            transition: var(--transition);
-        }
-
-        .nav-links a:hover:after {
-            width: 100%;
-        }
-
-        .cta-button {
-            background-color: var(--secondary);
-            color: var(--white);
-            padding: 12px 25px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: var(--transition);
-            display: inline-block;
-            border: none;
-            cursor: pointer;
-            letter-spacing: 0.5px;
-            box-shadow: 0 4px 15px rgba(230, 126, 34, 0.3);
-        }
-
-        .cta-button:hover {
-            background-color: #d35400;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(230, 126, 34, 0.4);
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 160px 0 80px;
-            background: linear-gradient(rgba(44, 62, 80, 0.85), rgba(44, 62, 80, 0.9)), url('https://images.unsplash.com/photo-1593696140826-c58b021acf8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
-            background-size: cover;
-            background-position: center;
-            color: var(--white);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-text {
-            flex: 1;
-            padding-right: 50px;
-        }
-
-        .hero-text h1 {
-            font-size: 3.2rem;
-            margin-bottom: 20px;
-            line-height: 1.2;
-            color: var(--white);
-        }
-
-        .hero-text h1 span {
-            color: var(--secondary);
-            position: relative;
-        }
-
-        .hero-text p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            max-width: 600px;
-            opacity: 0.9;
-        }
-
-        .hero-badges {
-            display: flex;
-            gap: 15px;
-            margin-top: 30px;
-        }
-
-        .badge {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            padding: 10px 20px;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            display: flex;
-            align-items: center;
-        }
-
-        .badge i {
-            color: var(--secondary);
-            font-size: 24px;
-            margin-right: 10px;
-        }
-
-        .hero-image {
-            flex: 1;
-            position: relative;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .hero-image img {
-            width: 100%;
-            display: block;
-            transition: var(--transition);
-        }
-
-        /* Services Section */
-        .services {
-            padding: 100px 0;
-            background-color: var(--white);
-            position: relative;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .section-title h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            color: var(--primary);
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title h2:after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background-color: var(--secondary);
-            border-radius: 2px;
-        }
-
-        .section-title p {
-            color: var(--gray);
-            max-width: 700px;
-            margin: 20px auto 0;
-            font-size: 1.1rem;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .service-card {
-            background: var(--white);
-            border-radius: 10px;
-            padding: 30px;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            text-align: center;
-            border: 1px solid var(--accent);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .service-card:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            opacity: 0;
-            transition: var(--transition);
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .service-card:hover:before {
-            opacity: 1;
-        }
-
-        .service-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            transition: var(--transition);
-        }
-
-        .service-card:hover .service-icon {
-            transform: scale(1.1) rotate(5deg);
-        }
-
-        .service-icon i {
-            font-size: 32px;
-            color: var(--white);
-        }
-
-        .service-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: var(--primary);
-        }
-
-        .service-card p {
-            color: var(--gray);
-        }
-
-        /* Portfolio Section */
-        .portfolio {
-            padding: 100px 0;
-            background-color: var(--light);
-            position: relative;
-        }
-        
-        .portfolio-filters {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 40px;
-        }
-        
-        .filter-btn {
-            padding: 10px 25px;
-            background: var(--white);
-            border: 1px solid var(--accent);
-            border-radius: 30px;
-            cursor: pointer;
-            transition: var(--transition);
-            font-weight: 500;
-        }
-        
-        .filter-btn.active, .filter-btn:hover {
-            background: var(--secondary);
-            color: var(--white);
-            border-color: var(--secondary);
-        }
-        
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 25px;
-        }
-        
-        .portfolio-item {
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            position: relative;
-            height: 300px;
-        }
-        
-        .portfolio-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-        
-        .portfolio-item:hover img {
-            transform: scale(1.05);
-        }
-        
-        .portfolio-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(44, 62, 80, 0.85);
-            color: var(--white);
-            padding: 20px;
-            transform: translateY(100%);
-            transition: var(--transition);
-        }
-        
-        .portfolio-item:hover .portfolio-overlay {
-            transform: translateY(0);
-        }
-        
-        .portfolio-overlay h3 {
-            margin-bottom: 10px;
-            color: var(--white);
-        }
-        
-        .portfolio-overlay p {
-            opacity: 0.8;
-            font-size: 0.9rem;
-        }
-
-        /* Benefits Section */
-        .benefits {
-            padding: 100px 0;
-            background-color: var(--white);
-            position: relative;
-        }
-
-        .benefits-content {
-            display: flex;
-            align-items: center;
-            gap: 50px;
-        }
-
-        .benefits-text {
-            flex: 1;
-        }
-
-        .benefits-text h2 {
-            font-size: 2.5rem;
-            margin-bottom: 25px;
-            color: var(--primary);
-            position: relative;
-            display: inline-block;
-        }
-
-        .benefits-text h2:after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 80px;
-            height: 4px;
-            background-color: var(--secondary);
-            border-radius: 2px;
-        }
-
-        .benefits-text p {
-            margin-bottom: 20px;
-            color: var(--gray);
-            font-size: 1.1rem;
-        }
-        
-        .benefit-list {
-            margin-top: 30px;
-        }
-        
-        .benefit-item {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 25px;
-        }
-        
-        .benefit-icon {
-            min-width: 50px;
-            height: 50px;
-            background: var(--accent);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 20px;
-        }
-        
-        .benefit-icon i {
-            color: var(--secondary);
-            font-size: 20px;
-        }
-        
-        .benefit-content h4 {
-            margin-bottom: 5px;
-        }
-
-        .benefits-image {
-            flex: 1;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-
-        .benefits-image:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        .benefits-image img {
-            width: 100%;
-            display: block;
-            transition: var(--transition);
-        }
-
-        .benefits-image:hover img {
-            transform: scale(1.05);
-        }
-
-        /* Testimonials */
-        .testimonials {
-            padding: 100px 0;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: var(--white);
-            text-align: center;
-        }
-
-        .testimonials-container {
             max-width: 800px;
-            margin: 0 auto;
-            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
         }
 
-        .testimonial {
-            background: var(--white);
-            padding: 40px;
+        header {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 5px;
+            color: var(--cor-primaria);
+        }
+
+        .subtitle {
+            color: var(--texto-suave);
+            font-size: 1.2rem;
+        }
+
+        .placar {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            background-color: var(--fundo-card);
+            padding: 15px;
             border-radius: 10px;
-            box-shadow: var(--shadow);
-            margin: 20px;
-            position: relative;
-            color: var(--primary);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
-        .testimonial:before {
-            content: '"';
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            font-size: 5rem;
-            color: rgba(44, 62, 80, 0.1);
-            font-family: serif;
-            line-height: 1;
+        .jogador {
+            text-align: center;
+            flex: 1;
         }
 
-        .testimonial p {
-            font-style: italic;
-            margin-bottom: 20px;
-            font-size: 1.1rem;
-            position: relative;
-            z-index: 1;
+        .jogador h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
         }
 
-        .client-info {
+        .pontos {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .jogador-x {
+            color: var(--cor-primaria);
+        }
+
+        .jogador-o {
+            color: var(--cor-secundaria);
+        }
+
+        .vez {
+            background-color: var(--fundo-input);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-top: 5px;
+            display: inline-block;
+        }
+
+        .tabuleiro-memoria {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: repeat(4, 1fr);
+            gap: 10px;
+            width: 100%;
+            max-width: 600px;
+            aspect-ratio: 5/4;
+            margin: 10px 0;
+        }
+
+        .carta {
+            background-color: var(--cor-primaria);
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transform-style: preserve-3d;
+            position: relative;
         }
 
-        .client-avatar {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            overflow: hidden;
-            margin-right: 15px;
-            border: 3px solid var(--secondary);
-        }
-
-        .client-avatar img {
+        .carta .frente,
+        .carta .verso {
+            position: absolute;
             width: 100%;
             height: 100%;
-            object-fit: cover;
-        }
-
-        .client-details h4 {
-            color: var(--primary);
-            margin-bottom: 5px;
-        }
-
-        .client-details p {
-            color: var(--secondary);
-            font-size: 0.9rem;
-            margin: 0;
-            font-style: normal;
-        }
-
-        /* CTA Section */
-        .cta-section {
-            padding: 100px 0;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: var(--white);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-section:before {
-            content: '';
-            position: absolute;
-            top: -100px;
-            left: -100px;
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            z-index: 0;
-        }
-
-        .cta-section:after {
-            content: '';
-            position: absolute;
-            bottom: -150px;
-            right: -100px;
-            width: 400px;
-            height: 400px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            z-index: 0;
-        }
-
-        .cta-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .cta-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
-
-        .cta-section p {
-            max-width: 700px;
-            margin: 0 auto 30px;
-            font-size: 1.1rem;
-            opacity: 0.9;
-        }
-
-        .cta-button.light {
-            background-color: var(--white);
-            color: var(--primary);
-        }
-
-        .cta-button.light:hover {
-            background-color: var(--light);
-            color: var(--primary);
-        }
-
-        /* Contact Form */
-        .contact {
-            padding: 100px 0;
-            background-color: var(--light);
-        }
-        
-        .contact-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 50px;
-        }
-        
-        .contact-info {
-            padding-right: 30px;
-        }
-        
-        .contact-info h2 {
-            font-size: 2.2rem;
-            margin-bottom: 25px;
-            position: relative;
-        }
-        
-        .contact-info h2:after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 80px;
-            height: 4px;
-            background-color: var(--secondary);
-            border-radius: 2px;
-        }
-        
-        .contact-details {
-            margin-top: 30px;
-        }
-        
-        .contact-item {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 25px;
-            text-decoration: none;
-        }
-
-        .contact-item  a {
-            display: flex;
-            align-items: flex-start;
-            /* margin-bottom: 25px; */
-            text-decoration: none;
-            color: #2c3e50;
-        }
-
-
-
-        
-        .contact-icon {
-            min-width: 50px;
-            height: 50px;
-            background: var(--white);
-            border-radius: 50%;
+            backface-visibility: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-right: 20px;
-            box-shadow: var(--shadow);
-        }
-        
-        .contact-icon i {
-            color: var(--secondary);
-            font-size: 20px;
-        }
-        
-        .contact-form {
-            background: var(--white);
-            padding: 40px;
             border-radius: 10px;
-            box-shadow: var(--shadow);
         }
-        
-        .form-group {
+
+        .carta .frente {
+            background-color: var(--fundo-card);
+            transform: rotateY(180deg);
+        }
+
+        .carta .verso {
+            background-color: var(--cor-primaria);
+            background-image: linear-gradient(135deg, var(--cor-primaria), #1e40af);
+        }
+
+        .carta.virada {
+            transform: rotateY(180deg);
+        }
+
+        .carta.encontrada .frente {
+            background-color: var(--cor-secundaria);
+        }
+
+        .controles {
+            display: flex;
+            gap: 15px;
+            width: 100%;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-reiniciar {
+            background-color: var(--cor-primaria);
+            color: white;
+        }
+
+        .btn-reiniciar:hover {
+            background-color: #1d4ed8;
+        }
+
+        .btn-novo-jogo {
+            background-color: var(--cor-secundaria);
+            color: white;
+        }
+
+        .btn-novo-jogo:hover {
+            background-color: #0d9663;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-conteudo {
+            background-color: var(--fundo-card);
+            padding: 2rem;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .modal h2 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--cor-secundaria);
+        }
+
+        .modal p {
+            font-size: 1.2rem;
             margin-bottom: 20px;
         }
-        
+
+        .modal button {
+            background-color: var(--cor-primaria);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+
         .form-group label {
             display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-weight: bold;
         }
-        
-        .form-group input, .form-group textarea, .form-group select {
+
+        .form-group input {
             width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-family: 'Open Sans', sans-serif;
-            font-size: 16px;
-            transition: var(--transition);
-        }
-        
-        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
-            border-color: var(--secondary);
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(230, 126, 34, 0.1);
-        }
-        
-        .form-group textarea {
-            min-height: 150px;
-            resize: vertical;
-        }
-        
-        .form-row {
-            display: flex;
-            gap: 15px;
-        }
-        
-        .form-row .form-group {
-            flex: 1;
+            padding: 0.8rem;
+            border-radius: 5px;
+            border: 1px solid var(--borda);
+            background-color: var(--fundo-input);
+            color: var(--texto-claro);
         }
 
-        /* Footer */
+        .contador-jogadas {
+            background-color: var(--fundo-input);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
         footer {
-            background-color: var(--primary);
-            color: var(--white);
-            padding: 70px 0 30px;
-            position: relative;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 50px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .footer-column h3 {
-            font-size: 1.3rem;
-            margin-bottom: 20px;
-            position: relative;
-            padding-bottom: 10px;
-            color: var(--white);
-        }
-
-        .footer-column h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 50px;
-            height: 2px;
-            background-color: var(--secondary);
-        }
-
-        .footer-column p, .footer-column a {
-            color: #bbbbbb;
-            margin-bottom: 10px;
-            display: block;
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .footer-column a:hover {
-            color: var(--secondary);
-            padding-left: 5px;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .social-links a {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
-        }
-
-        .social-links a:hover {
-            background-color: var(--secondary);
-            transform: translateY(-3px);
-        }
-
-        .copyright {
+            margin-top: 30px;
             text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #bbbbbb;
+            color: var(--texto-suave);
             font-size: 0.9rem;
-            position: relative;
-            z-index: 1;
         }
 
-        /* Animations */
-        @keyframes fadeInUp {
+        /* Animações */
+        @keyframes aparecer {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: scale(0.8);
             }
+
             to {
                 opacity: 1;
-                transform: translateY(0);
+                transform: scale(1);
             }
         }
 
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 1s ease;
+        .carta {
+            animation: aparecer 0.3s ease-out;
         }
 
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        @keyframes premio {
+            0% {
+                transform: scale(1);
+            }
 
-        /* Responsive */
-        @media (max-width: 992px) {
-            .hero-content, .benefits-content, .contact-container {
-                flex-direction: column;
+            50% {
+                transform: scale(1.1);
             }
-            
-            .hero-text, .benefits-text, .contact-info {
-                padding-right: 0;
-                margin-bottom: 50px;
-                text-align: center;
-            }
-            
-            .hero-text p, .benefits-text p {
-                margin-left: auto;
-                margin-right: auto;
-            }
-            
-            .benefits-text h2:after {
-                left: 50%;
-                transform: translateX(-50%);
-            }
-            
-            .hero-badges {
-                justify-content: center;
-            }
-            
-            .benefit-item, .contact-item {
-                justify-content: center;
+
+            100% {
+                transform: scale(1);
             }
         }
 
+        .premio {
+            animation: premio 0.5s ease-in-out;
+            color: var(--cor-alerta);
+        }
+
+        /* Responsividade para telas menores */
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
+            .tabuleiro-memoria {
+                grid-template-columns: repeat(4, 1fr);
+                grid-template-rows: repeat(5, 1fr);
+                aspect-ratio: 4/5;
+                max-width: 400px;
             }
-            
-            .hero-text h1 {
-                font-size: 2.5rem;
+
+            .carta {
+                font-size: 1rem;
             }
-            
-            .section-title h2 {
+        }
+
+        @media (max-width: 480px) {
+            h1 {
                 font-size: 2rem;
             }
-            
-            .hero {
-                padding: 140px 0 60px;
+
+            .subtitle {
+                font-size: 1rem;
             }
-            
-            .form-row {
+
+            .placar {
                 flex-direction: column;
-                gap: 0;
+                gap: 15px;
             }
-            
-            .portfolio-grid {
-                grid-template-columns: 1fr;
+
+            .tabuleiro-memoria {
+                grid-template-columns: repeat(4, 1fr);
+                grid-template-rows: repeat(5, 1fr);
+                max-width: 350px;
+            }
+
+            .carta {
+                font-size: 0.9rem;
+            }
+
+            button {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 350px) {
+            .tabuleiro-memoria {
+                grid-template-columns: repeat(3, 1fr);
+                grid-template-rows: repeat(7, 1fr);
+                max-width: 250px;
+                aspect-ratio: 3/7;
+            }
+
+            .carta {
+                font-size: 0.8rem;
             }
         }
     </style>
 </head>
+
+
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <nav class="navbar">
-                <div class="logo">
-                    <div class="logo-text">
-                        <h1>ELITTE</h1>
-                        <span>Esquadrias & Envidraçamentos</span>
-                    </div>
-                </div>
-                <ul class="nav-links">
-                    <li><a href="#services">Serviços</a></li>
-                    <li><a href="#portfolio">Portfólio</a></li>
-                    <li><a href="#benefits">Vantagens</a></li>
-                    <li><a href="#testimonials">Depoimentos</a></li>
-                    <li><a href="#contact">Contato</a></li>
-                </ul>
-                <a href="#contact" class="cta-button">Solicitar Orçamento</a>
-            </nav>
-        </div>
-    </header>
+    <div class="container">
+        <header>
+            <h1>Jogo da Memória</h1>
+            <div class="subtitle">WorxEL Edition</div>
+            <div class="categoria-atual" id="categoria-atual">Categoria: Frutas</div>
+        </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1>Soluções em <span>Alumínio e Vidro</span> para seu Projeto</h1>
-                    <p>Especialistas em esquadrias de alto padrão para residências, edifícios e espaços comerciais. Qualidade, durabilidade e design inovador.</p>
-                    <a href="#contact" class="cta-button">Fale com um Especialista</a>
-                    
-                    <div class="hero-badges">
-                        <div class="badge">
-                            <i class="fas fa-home"></i>
-                            <div>Residencial</div>
-                        </div>
-                        <div class="badge">
-                            <i class="fas fa-building"></i>
-                            <div>Predial</div>
-                        </div>
-                        <div class="badge">
-                            <i class="fas fa-store"></i>
-                            <div>Comercial</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="hero-image reveal">
-                    <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Esquadrias em Alumínio">
-                </div>
+        <div class="placar">
+            <div class="jogador">
+                <h3 class="jogador-x" id="nome-jogador1">Jogador 1</h3>
+                <div class="pontos" id="pontos-jogador1">0</div>
+                <div class="vez" id="vez-jogador1">Sua vez!</div>
+            </div>
+
+            <div class="jogador">
+                <h3 class="jogador-o" id="nome-jogador2">Jogador 2</h3>
+                <div class="pontos" id="pontos-jogador2">0</div>
+                <div class="vez" id="vez-jogador2">Sua vez!</div>
             </div>
         </div>
-    </section>
 
-    <!-- Services Section -->
-    <section id="services" class="services">
-        <div class="container">
-            <div class="section-title">
-                <h2>Nossos <span>Serviços</span></h2>
-                <p>Soluções completas em esquadrias de alumínio e envidraçamentos</p>
-            </div>
-            
-            <div class="services-grid">
-                <div class="service-card reveal">
-                    <div class="service-icon">
-                        <i class="fas fa-window-maximize"></i>
-                    </div>
-                    <h3>Janelas em Alumínio</h3>
-                    <p>Janelas de correr, basculantes, pivotantes e maxim-ar para todos os ambientes.</p>
-                </div>
-                
-                <div class="service-card reveal">
-                    <div class="service-icon">
-                        <i class="fas fa-door-open"></i>
-                    </div>
-                    <h3>Portas de Alumínio</h3>
-                    <p>Portas deslizantes, pivotantes e de giro com acabamentos premium.</p>
-                </div>
-                
-                <div class="service-card reveal">
-                    <div class="service-icon">
-                        <i class="fas fa-border-all"></i>
-                    </div>
-                    <h3>Fachadas em Vidro</h3>
-                    <p>Soluções modernas para fachadas comerciais e prediais com vidro estrutural.</p>
-                </div>
-                
-                <div class="service-card reveal">
-                    <div class="service-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3>Guarda-Corpos</h3>
-                    <p>Corrimãos e guarda-corpos em vidro temperado com estrutura em alumínio.</p>
-                </div>
-                
-                <div class="service-card reveal">
-                    <div class="service-icon">
-                        <i class="fas fa-bath"></i>
-                    </div>
-                    <h3>Box para Banheiro</h3>
-                    <p>Box em vidro temperado com portas deslizantes ou de abrir.</p>
-                </div>
-                
-                <div class="service-card reveal">
-                    <div class="service-icon">
-                        <i class="fas fa-vector-square"></i>
-                    </div>
-                    <h3>Esquadrias Personalizadas</h3>
-                    <p>Soluções sob medida para projetos arquitetônicos especiais.</p>
-                </div>
-            </div>
+        <div class="contador-jogadas" id="contador-jogadas">
+            Jogadas: 0
         </div>
-    </section>
 
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="portfolio">
-        <div class="container">
-            <div class="section-title">
-                <h2>Nossos <span>Projetos</span></h2>
-                <p>Conheça alguns de nossos trabalhos realizados</p>
-            </div>
-            
-            <div class="portfolio-filters">
-                <button class="filter-btn active">Todos</button>
-                <button class="filter-btn">Residencial</button>
-                <button class="filter-btn">Predial</button>
-                <button class="filter-btn">Comercial</button>
-            </div>
-            
-            <div class="portfolio-grid">
-                <div class="portfolio-item reveal">
-                    <img src="https://images.unsplash.com/photo-1556912167-f556f1f39fdf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Projeto Residencial">
-                    <div class="portfolio-overlay">
-                        <h3>Janelas Panorâmicas</h3>
-                        <p>Residência Alto Padrão - São Paulo</p>
-                    </div>
-                </div>
-                
-                <div class="portfolio-item reveal">
-                    <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Projeto Predial">
-                    <div class="portfolio-overlay">
-                        <h3>Fachada Corporativa</h3>
-                        <p>Edifício Comercial - Rio de Janeiro</p>
-                    </div>
-                </div>
-                
-                <div class="portfolio-item reveal">
-                    <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Projeto Comercial">
-                    <div class="portfolio-overlay">
-                        <h3>Loja de Shopping</h3>
-                        <p>Espaço Comercial - Belo Horizonte</p>
-                    </div>
-                </div>
-                
-                <div class="portfolio-item reveal">
-                    <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Sacada Residencial">
-                    <div class="portfolio-overlay">
-                        <h3>Sacada Envidraçada</h3>
-                        <p>Apartamento - Curitiba</p>
-                    </div>
-                </div>
-                
-                <div class="portfolio-item reveal">
-                    <img src="https://images.unsplash.com/photo-1593696140826-c58b021acf8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Escritório Comercial">
-                    <div class="portfolio-overlay">
-                        <h3>Divisórias de Vidro</h3>
-                        <p>Escritório Corporativo - Porto Alegre</p>
-                    </div>
-                </div>
-                
-                <div class="portfolio-item reveal">
-                    <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Projeto Predial">
-                    <div class="portfolio-overlay">
-                        <h3>Fachada de Edifício</h3>
-                        <p>Condomínio Residencial - Florianópolis</p>
-                    </div>
-                </div>
-            </div>
+        <div class="tabuleiro-memoria" id="tabuleiro-memoria">
+            <!-- As cartas serão geradas via JavaScript -->
         </div>
-    </section>
 
-    <!-- Benefits Section -->
-    <section id="benefits" class="benefits">
-        <div class="container">
-            <div class="benefits-content">
-                <div class="benefits-text">
-                    <h2>Vantagens das <span>Esquadrias em Alumínio</span></h2>
-                    <p>Nossas soluções combinam estética, funcionalidade e durabilidade para transformar seus espaços.</p>
-                    
-                    <div class="benefit-list">
-                        <div class="benefit-item">
-                            <div class="benefit-icon">
-                                <i class="fas fa-leaf"></i>
-                            </div>
-                            <div class="benefit-content">
-                                <h4>Sustentabilidade</h4>
-                                <p>Alumínio 100% reciclável e vidro de baixa emissão térmica</p>
-                            </div>
-                        </div>
-                        
-                        <div class="benefit-item">
-                            <div class="benefit-icon">
-                                <i class="fas fa-shield-alt"></i>
-                            </div>
-                            <div class="benefit-content">
-                                <h4>Segurança</h4>
-                                <p>Vidros temperados e laminados com tratamento de segurança</p>
-                            </div>
-                        </div>
-                        
-                        <div class="benefit-item">
-                            <div class="benefit-icon">
-                                <i class="fas fa-snowflake"></i>
-                            </div>
-                            <div class="benefit-content">
-                                <h4>Eficiência Térmica</h4>
-                                <p>Sistemas com ruptura de ponte térmica para melhor isolamento</p>
-                            </div>
-                        </div>
-                        
-                        <div class="benefit-item">
-                            <div class="benefit-icon">
-                                <i class="fas fa-paint-roller"></i>
-                            </div>
-                            <div class="benefit-content">
-                                <h4>Baixa Manutenção</h4>
-                                <p>Alumínio anodizado ou pintado a pó com alta resistência</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="benefits-image reveal">
-                    <img src="https://images.unsplash.com/photo-1595514535219-4ae9b1d3c25a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Vantagens do Alumínio">
-                </div>
-            </div>
+        <div class="controles">
+            <button class="btn-reiniciar" id="reiniciar">
+                <i class="fas fa-sync-alt"></i> Reiniciar
+            </button>
+            <button class="btn-novo-jogo" id="novo-jogo">
+                <i class="fas fa-plus-circle"></i> Novo Jogo
+            </button>
+            <button class="btn-novo-jogo" id="alterar-nomes">
+                <i class="fas fa-users"></i> Alterar Nomes
+            </button>
+            <button class="btn-novo-jogo" id="proxima-categoria">
+                <i class="fas fa-random"></i> Próxima Categoria
+            </button>
         </div>
-    </section>
+    </div>
 
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="testimonials">
-        <div class="container">
-            <div class="section-title">
-                <h2>Depoimentos</h2>
-                <p>O que nossos clientes dizem sobre nossos serviços</p>
+    <!-- Modal inicial para inserir nomes -->
+    <div class="modal" id="modal-nomes" style="display: flex;">
+        <div class="modal-conteudo">
+            <h2>Insira os nomes dos jogadores</h2>
+
+            <div class="form-group">
+                <label for="jogador1">Jogador 1:</label>
+                <input type="text" id="jogador1" placeholder="Nome do jogador 1" value="Jogador 1">
             </div>
-            
-            <div class="testimonials-container">
-                <div class="testimonial">
-                    <p>"A ELITTE Esquadrias transformou completamente a fachada do nosso escritório. O trabalho foi impecável, com atenção aos detalhes e cumprimento rigoroso do prazo. Recomendo fortemente!"</p>
-                    <div class="client-info">
-                        <div class="client-avatar">
-                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Cliente Satisfeito">
-                        </div>
-                        <div class="client-details">
-                            <h4>Carlos Mendonça</h4>
-                            <p>Arquiteto - SC Design Office</p>
-                        </div>
-                    </div>
-                </div>
+
+            <div class="form-group">
+                <label for="jogador2">Jogador 2:</label>
+                <input type="text" id="jogador2" placeholder="Nome do jogador 2" value="Jogador 2">
             </div>
+
+            <button id="iniciar-jogo">Iniciar Jogo</button>
         </div>
-    </section>
+    </div>
 
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="container">
-            <div class="cta-content">
-                <h2>Transforme seu Espaço com Soluções Premium</h2>
-                <p>Solicite um orçamento sem compromisso e descubra as melhores soluções em alumínio e vidro para seu projeto</p>
-                <a href="#contact" class="cta-button light">Solicitar Orçamento</a>
-            </div>
+    <div class="modal" id="modal-vitoria">
+        <div class="modal-conteudo">
+            <h2 id="modal-titulo">Vitória!</h2>
+            <p id="modal-mensagem">O jogador 1 venceu esta partida!</p>
+            <button id="modal-btn">Jogar Novamente</button>
         </div>
-    </section>
+    </div>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="contact-container">
-                <div class="contact-info">
-                    <h2>Entre em <span>Contato</span></h2>
-                    <p>Estamos prontos para atender seu projeto com soluções personalizadas em alumínio e vidro.</p>
-                    
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div>
-                                <h4>Endereço</h4>
-                                <p>Av. Estados - Balneário Camboriú, SC</p>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-phone-alt"></i>
-                            </div>
-                            <div>
-                                <h4>Telefone</h4>
-                                <a href="https://wa.me/5547991003832"><p>(47) 99100-3832 - Tec. Joelso</p></a>
-                                <a href="https://wa.me/5547996347908"><p>(47) 99634-7908 - Tec. Eliandro</p></a>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div>
-                                <h4>Email</h4>
-                                <p>worxel@outlook.com</p>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-clock"></i>
-                            </div>
-                            <div>
-                                <h4>Horário</h4>
-                                <p>Seg-Sex: 8h às 18h | Sáb: 8h às 12h</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- <div class="contact-form">
-                    <h3>Solicite um Orçamento</h3> -->
-                    <!-- <form>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="name">Nome Completo</label>
-                                <input type="text" id="name" placeholder="Seu nome" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="phone">Telefone</label>
-                                <input type="tel" id="phone" placeholder="(11) 99999-9999" required>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" placeholder="seuemail@exemplo.com" required>
-                        </div> 
-                        
-                        <div class="form-group">
-                            <label for="project-type">Tipo de Projeto</label>
-                            <select id="project-type" required>
-                                <option value="">Selecione uma opção</option>
-                                <option value="residencial">Residencial</option>
-                                <option value="predial">Predial</option>
-                                <option value="comercial">Comercial</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message">Mensagem</label>
-                            <textarea id="message" placeholder="Descreva seu projeto ou solicitação" required></textarea>
-                        </div>
-                        
-                        <button type="submit" class="cta-button" style="width:100%;">Enviar Solicitação</button>
-                    </form> 
-                </div>-->
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
     <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>ELITTE Solutions</h3>
-                    <p>Especialistas em esquadrias de alumínio e soluções em vidro para projetos residenciais, prediais e comerciais.</p>
-                    <div class="social-links">
-                        <!-- <a href="#"><i class="fab fa-facebook-f"></i></a> -->
-                        <!-- <a href="https://wa.me/5547996347908"><i class="fab fa-instagram"></i></a> -->
-                        <a href="https://wa.me/5547996347908" target="_blank"  alt="Técnico Eliandro"><i class="fab fa-whatsapp"></i>Tec. Eliandro</a>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <a href="https://wa.me/5547991003832" target="_blank" alt="Técnico Joelso"><i class="fab fa-whatsapp"></i>Tec. Joelso</a>
-                        <!-- <a href="#"><i class="fab fa-linkedin"></i></a> -->
-                    </div>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Serviços</h3>
-                    <a href="#services">Janelas em Alumínio</a>
-                    <a href="#services">Portas de Alumínio</a>
-                    <a href="#services">Fachadas em Vidro</a>
-                    <a href="#services">Guarda-Corpos</a>
-                    <a href="#services">Box para Banheiro</a>
-                    <a href="#services">Esquadrias Personalizadas</a>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Links Rápidos</h3>
-                    <a href="#services">Serviços</a>
-                    <a href="#portfolio">Portfólio</a>
-                    <a href="#benefits">Vantagens</a>
-                    <a href="#testimonials">Depoimentos</a>
-                    <a href="#contact">Contato</a>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Áreas de Atuação</h3>
-                    <a href="#">Balneário Camboriú</a>
-                    <a href="#">Itapema</a>
-                    <a href="#">Florianópolis</a>
-                </div>
-            </div>
-            
-            <div class="copyright">
-                <p>&copy; 2025 ELITTE | Esquadrias & Envidraçamentos. Todos os direitos reservados. CNPJ: 12.345.678/0001-99</p>
-            </div>
-        </div>
+        Desenvolvido por WorxEL.
     </footer>
 
     <script>
-        // Scroll reveal animations
-        function revealOnScroll() {
-            const elements = document.querySelectorAll('.reveal');
-            elements.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                const windowHeight = window.innerHeight;
-                if (elementTop < windowHeight - 100) {
-                    element.classList.add('active');
+        document.addEventListener('DOMContentLoaded', function () {
+            // Elementos do DOM
+            const tabuleiroMemoria = document.getElementById('tabuleiro-memoria');
+            const pontosJogador1 = document.getElementById('pontos-jogador1');
+            const pontosJogador2 = document.getElementById('pontos-jogador2');
+            const nomeJogador1 = document.getElementById('nome-jogador1');
+            const nomeJogador2 = document.getElementById('nome-jogador2');
+            const vezJogador1 = document.getElementById('vez-jogador1');
+            const vezJogador2 = document.getElementById('vez-jogador2');
+            const btnReiniciar = document.getElementById('reiniciar');
+            const btnNovoJogo = document.getElementById('novo-jogo');
+            const btnAlterarNomes = document.getElementById('alterar-nomes');
+            const btnProximaCategoria = document.getElementById('proxima-categoria');
+            const modalNomes = document.getElementById('modal-nomes');
+            const modalVitoria = document.getElementById('modal-vitoria');
+            const modalTitulo = document.getElementById('modal-titulo');
+            const modalMensagem = document.getElementById('modal-mensagem');
+            const modalBtn = document.getElementById('modal-btn');
+            const contadorJogadas = document.getElementById('contador-jogadas');
+            const inputJogador1 = document.getElementById('jogador1');
+            const inputJogador2 = document.getElementById('jogador2');
+            const btnIniciarJogo = document.getElementById('iniciar-jogo');
+            const categoriaAtual = document.getElementById('categoria-atual');
+
+            // Categorias de palavras para o jogo (10 categorias com 10 pares cada)
+            const categorias = [
+                {
+                    nome: "Frutas",
+                    palavras: ["MAÇÃ", "BANANA", "LARANJA", "UVA", "MORANGO", "MELANCIA", "ABACAXI", "MANGA", "KIWI", "PÊSSEGO"]
+                },
+                {
+                    nome: "Animais",
+                    palavras: ["CACHORRO", "GATO", "ELEFANTE", "LEÃO", "TIGRE", "GIRAFA", "MACACO", "ZEBRA", "URSO", "COELHO"]
+                },
+                {
+                    nome: "Países",
+                    palavras: ["BRASIL", "EUA", "CANADÁ", "JAPÃO", "ALEMANHA", "FRANÇA", "ITÁLIA", "ARGENTINA", "CHILE", "MÉXICO"]
+                },
+                {
+                    nome: "Cores",
+                    palavras: ["AZUL", "VERMELHO", "VERDE", "AMARELO", "ROXO", "LARANJA", "ROSA", "PRETO", "BRANCO", "CINZA"]
+                },
+                {
+                    nome: "Profissões",
+                    palavras: ["MÉDICO", "PROFESSOR", "ENGENHEIRO", "ADVOGADO", "BOMBEIRO", "POLICIAL", "ENFERMEIRO", "JORNALISTA", "ARTISTA", "MÚSICO"]
+                },
+                {
+                    nome: "Esportes",
+                    palavras: ["FUTEBOL", "BASQUETE", "TÊNIS", "NATAÇÃO", "CICLISMO", "CORRIDA", "VOLEI", "SURFE", "SKATE", "GOLFE"]
+                },
+                {
+                    nome: "Comidas",
+                    palavras: ["PIZZA", "HAMBÚRGUER", "SUSHI", "SALADA", "SORVETE", "BOLO", "PÃO", "QUEIJO", "CHOCOLATE", "MACARRÃO"]
+                },
+                {
+                    nome: "Objetos",
+                    palavras: ["CADEIRA", "MESA", "COMPUTADOR", "LIVRO", "CELULAR", "RELOGI", "ÓCULOS", "GUARDA-CHUVA", "MOCHILA", "LÂMPADA"]
+                },
+                {
+                    nome: "Transportes",
+                    palavras: ["CARRO", "BICICLETA", "AVIÃO", "BARCO", "TREM", "MOTO", "ÔNIBUS", "HELICÓPTERO", "NAVIO", "METRÔ"]
+                },
+                {
+                    nome: "SuperPDV",
+                    palavras: ["VENDA", "CLIENTE", "PRODUTO", "ESTOQUE", "PAGAMENTO", "CUPOM", "NOTA", "FISCAL", "CAIXA", "SUPORTE"]
                 }
-            });
-        }
-        
-        // Add scroll event listener
-        window.addEventListener('scroll', revealOnScroll);
-        
-        // Initial check on page load
-        window.addEventListener('load', revealOnScroll);
-        
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    window.scrollTo({
-                        top: target.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-        
-        // Header scroll effect
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
-            } else {
-                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.08)';
-                header.style.background = 'var(--white)';
+            ];
+
+            // Estado do jogo
+            let cartas = [];
+            let cartasViradas = [];
+            let cartasEncontradas = [];
+            let jogadorAtual = 1;
+            let jogoAtivo = true;
+            let placar = { 1: 0, 2: 0 };
+            let jogadas = 0;
+            let nomesJogadores = { 1: 'Jogador 1', 2: 'Jogador 2' };
+            let categoriaIndex = 0;
+
+            // Inicializar o jogo
+            function init() {
+                // Adicionar event listeners
+                btnReiniciar.addEventListener('click', reiniciarPartida);
+                btnNovoJogo.addEventListener('click', novoJogo);
+                btnAlterarNomes.addEventListener('click', abrirModalNomes);
+                btnProximaCategoria.addEventListener('click', proximaCategoria);
+                modalBtn.addEventListener('click', fecharModal);
+                btnIniciarJogo.addEventListener('click', iniciarJogo);
+
+                // Permitir fechar o modal de nomes pressionando Enter
+                inputJogador2.addEventListener('keypress', function (e) {
+                    if (e.key === 'Enter') {
+                        iniciarJogo();
+                    }
+                });
+
+                // Gerar o tabuleiro inicial
+                atualizarCategoria();
+                gerarTabuleiro();
             }
+
+            // Avançar para a próxima categoria
+            function proximaCategoria() {
+                categoriaIndex = (categoriaIndex + 1) % categorias.length;
+                atualizarCategoria();
+                reiniciarPartida();
+            }
+
+            // Atualizar a exibição da categoria atual
+            function atualizarCategoria() {
+                categoriaAtual.textContent = `Categoria: ${categorias[categoriaIndex].nome}`;
+            }
+
+            // Iniciar jogo com os nomes fornecidos
+            function iniciarJogo() {
+                if (inputJogador1.value.trim() !== '') {
+                    nomesJogadores[1] = inputJogador1.value;
+                }
+
+                if (inputJogador2.value.trim() !== '') {
+                    nomesJogadores[2] = inputJogador2.value;
+                }
+
+                nomeJogador1.textContent = nomesJogadores[1];
+                nomeJogador2.textContent = nomesJogadores[2];
+
+                modalNomes.style.display = 'none';
+                reiniciarPartida();
+            }
+
+            // Abrir modal para alterar nomes
+            function abrirModalNomes() {
+                inputJogador1.value = nomesJogadores[1];
+                inputJogador2.value = nomesJogadores[2];
+                modalNomes.style.display = 'flex';
+            }
+
+            // Gerar o tabuleiro com as cartas
+            function gerarTabuleiro() {
+                tabuleiroMemoria.innerHTML = '';
+
+                // Obter as palavras da categoria atual
+                const palavrasCategoria = categorias[categoriaIndex].palavras;
+
+                // Duplicar e embaralhar as palavras
+                let palavrasEmbaralhadas = [...palavrasCategoria, ...palavrasCategoria];
+                palavrasEmbaralhadas = embaralharArray(palavrasEmbaralhadas);
+
+                // Criar as cartas
+                palavrasEmbaralhadas.forEach((palavra, index) => {
+                    const carta = document.createElement('div');
+                    carta.className = 'carta';
+                    carta.dataset.indice = index;
+                    carta.dataset.palavra = palavra;
+
+                    const frente = document.createElement('div');
+                    frente.className = 'frente';
+                    frente.textContent = palavra;
+
+                    const verso = document.createElement('div');
+                    verso.className = 'verso';
+                    verso.innerHTML = '<i class="fas fa-question"></i>';
+
+                    carta.appendChild(frente);
+                    carta.appendChild(verso);
+
+                    carta.addEventListener('click', () => virarCarta(carta));
+                    tabuleiroMemoria.appendChild(carta);
+                });
+
+                cartas = Array.from(document.querySelectorAll('.carta'));
+            }
+
+            // Embaralhar array
+            function embaralharArray(array) {
+                for (let i = array.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [array[i], array[j]] = [array[j], array[i]];
+                }
+                return array;
+            }
+
+            // Virar uma carta
+            function virarCarta(carta) {
+                // Não fazer nada se a carta já estiver virada, encontrada ou o jogo não estiver ativo
+                if (carta.classList.contains('virada') ||
+                    carta.classList.contains('encontrada') ||
+                    !jogoAtivo ||
+                    cartasViradas.length >= 2) {
+                    return;
+                }
+
+                // Virar a carta
+                carta.classList.add('virada');
+                cartasViradas.push(carta);
+
+                // Verificar se duas cartas estão viradas
+                if (cartasViradas.length === 2) {
+                    jogadas++;
+                    contadorJogadas.textContent = `Jogadas: ${jogadas}`;
+
+                    setTimeout(verificarPar, 700);
+                }
+            }
+
+            // Verificar se as cartas viradas formam um par
+            function verificarPar() {
+                const [carta1, carta2] = cartasViradas;
+
+                if (carta1.dataset.palavra === carta2.dataset.palavra) {
+                    // Par encontrado
+                    carta1.classList.add('encontrada');
+                    carta2.classList.add('encontrada');
+                    cartasEncontradas.push(carta1, carta2);
+
+                    // Atualizar pontuação
+                    placar[jogadorAtual]++;
+                    atualizarPlacar();
+
+                    // Verificar se o jogo terminou
+                    if (cartasEncontradas.length === cartas.length) {
+                        finalizarJogo();
+                    }
+                } else {
+                    // Virar as cartas de volta
+                    carta1.classList.remove('virada');
+                    carta2.classList.remove('virada');
+
+                    // Mudar jogador
+                    jogadorAtual = jogadorAtual === 1 ? 2 : 1;
+                    atualizarIndicadorVez();
+                }
+
+                // Limpar cartas viradas
+                cartasViradas = [];
+            }
+
+            // Finalizar o jogo
+            function finalizarJogo() {
+                jogoAtivo = false;
+
+                // Determinar vencedor
+                let vencedor;
+                if (placar[1] > placar[2]) {
+                    vencedor = 1;
+                } else if (placar[2] > placar[1]) {
+                    vencedor = 2;
+                } else {
+                    vencedor = 0; // Empate
+                }
+
+                // Exibir mensagem de vitória
+                if (vencedor === 0) {
+                    modalTitulo.textContent = 'Empate!';
+                    modalMensagem.textContent = 'Ninguém venceu esta partida.';
+                } else {
+                    modalTitulo.textContent = 'Vitória!';
+                    modalMensagem.textContent = `${nomesJogadores[vencedor]} venceu esta partida!`;
+                }
+
+                setTimeout(() => {
+                    modalVitoria.style.display = 'flex';
+                }, 1000);
+            }
+
+            // Reiniciar a partida (mantendo o placar)
+            function reiniciarPartida() {
+                cartasViradas = [];
+                cartasEncontradas = [];
+                jogadorAtual = 1;
+                jogoAtivo = true;
+                jogadas = 0;
+                contadorJogadas.textContent = `Jogadas: ${jogadas}`;
+
+                // Limpar e regenerar o tabuleiro
+                gerarTabuleiro();
+                atualizarIndicadorVez();
+            }
+
+            // Novo jogo (zerar o placar)
+            function novoJogo() {
+                placar = { 1: 0, 2: 0 };
+                atualizarPlacar();
+                reiniciarPartida();
+            }
+
+            // Atualizar o placar na interface
+            function atualizarPlacar() {
+                pontosJogador1.textContent = placar[1];
+                pontosJogador2.textContent = placar[2];
+            }
+
+            // Atualizar o indicador de vez
+            function atualizarIndicadorVez() {
+                if (jogadorAtual === 1) {
+                    vezJogador1.style.display = 'inline-block';
+                    vezJogador2.style.display = 'none';
+                } else {
+                    vezJogador1.style.display = 'none';
+                    vezJogador2.style.display = 'inline-block';
+                }
+            }
+
+            // Fechar o modal
+            function fecharModal() {
+                modalVitoria.style.display = 'none';
+                reiniciarPartida();
+            }
+
+            // Inicializar o jogo
+            init();
         });
-        
-        // Portfolio filter
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        filterButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                // Remove active class from all buttons
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                // Add active class to clicked button
-                this.classList.add('active');
-                // In a real implementation, you would filter the portfolio items here
-            });
-        });
-        
-        // Form submission
-        const contactForm = document.querySelector('form');
-        if (contactForm) {
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                alert('Solicitação enviada com sucesso! Entraremos em contato em breve.');
-                contactForm.reset();
-            });
-        }
     </script>
 </body>
+
 </html>
